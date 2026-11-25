@@ -1,5 +1,5 @@
-const CACHE='matjari-app-1.1.5';
-const FILES=["./","./index.html","./app-icon.svg","./manifest.webmanifest","./styles.css?v=1.1.5","./theme.css?v=1.1.5","./inventory.js?v=1.1.5","./ledger.js?v=1.1.5","./commerce.js?v=1.1.5","./report-data.js?v=1.1.5","./grocery-catalog.js?v=1.1.5","./backup-data.js?v=1.1.5","./reports.js?v=1.1.5","./settings.js?v=1.1.5","./cloud.css?v=1.1.5","./cloud-config.js?v=1.1.5","./cloud.bundle.js?v=1.1.5","./app.js?v=1.1.5"];
+const CACHE='matjari-app-1.1.7';
+const FILES=["./","./index.html","./app-icon.svg","./manifest.webmanifest","./styles.css?v=1.1.7","./theme.css?v=1.1.7","./inventory.js?v=1.1.7","./ledger.js?v=1.1.7","./commerce.js?v=1.1.7","./report-data.js?v=1.1.7","./grocery-catalog.js?v=1.1.7","./backup-data.js?v=1.1.7","./reports.js?v=1.1.7","./settings.js?v=1.1.7","./cloud.css?v=1.1.7","./cloud-config.js?v=1.1.7","./cloud.bundle.js?v=1.1.7","./app.js?v=1.1.7"];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>{if(!self.registration.active)return self.skipWaiting();})));
 self.addEventListener('message',event=>{if(event.data?.type==='ACTIVATE_UPDATE')self.skipWaiting();});
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('matjari-app-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));

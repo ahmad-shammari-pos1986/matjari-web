@@ -5,3 +5,37 @@
 .update-banner{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:180;display:flex;align-items:center;justify-content:space-between;gap:16px;width:min(520px,calc(100% - 24px));padding:14px 18px;border:1px solid #cde2d5;background:#f4fbf5;color:#285d48;border-radius:16px;box-shadow:0 8px 35px #214b3020;font-size:12px}.update-banner button{border:0;border-radius:9px;padding:9px 14px;background:#327467;color:#fff;font:inherit;white-space:nowrap}.release-line{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px;color:#718276;font-size:12px}.release-line button{font:inherit;border:0;background:none;color:#327467;cursor:pointer}
 .cloud-settings{padding:24px;margin-top:24px}.cloud-settings h2{font-size:18px}.cloud-settings p{font-size:12px;line-height:2;color:#7c887f}.cloud-settings-actions{display:flex;gap:10px;flex-wrap:wrap}
 .cloud-status{position:static;display:table;max-width:100%;margin:0 0 16px;padding:7px 11px;box-shadow:none;overflow-wrap:anywhere}
+
+/* Customer entrance follows the supplied green wallet reference. */
+.cloud-gate{background:#eeedf9;padding:16px;align-items:safe center;}
+.login-reference{position:relative;isolation:isolate;overflow:hidden;width:min(510px,100%);padding:0;border:3px solid #fff;border-radius:42px;background:radial-gradient(ellipse at 85% 25%,#ffffff 0,#f5faf7 45%,#e9f6ef 100%);box-shadow:0 0 0 2px #d8e9df,0 18px 55px #274d3320;color:#082c1d;}
+.login-content{position:relative;z-index:1;padding:38px 38px 64px;}
+.login-topline{display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:20px;font-weight:800;min-height:48px;margin-bottom:12px;}
+.login-topline .cloud-admin-link{margin:0;flex:none;width:40px;height:40px;padding:0;border-radius:50%;font-size:28px;font-weight:800;line-height:1;color:#466954;letter-spacing:3px;}
+.login-topline .cloud-admin-link:hover{background:#ffffff70;}
+.login-reference .cloud-emblem{margin:10px auto 4px;width:136px;height:116px;border-radius:35px;background:linear-gradient(145deg,#dcefe2,#cfe8d8);box-shadow:inset 0 0 30px #ffffff55;}
+.cloud-emblem svg{width:125px;height:114px;}
+.login-reference h1{font-size:36px;line-height:1.55;font-weight:900;letter-spacing:-1px;text-align:center;margin:8px -12px 10px;color:#062d1b;}
+.login-reference .login-intro{font-size:18px;line-height:1.65;font-weight:700;color:#242f28;text-align:center;margin:0 0 20px;}
+.login-reference .login-field{display:block;margin:16px 0 0;font-size:18px;font-weight:800;color:#1b2921;}
+.login-input{position:relative;display:block;margin-top:7px;}
+.login-input>svg{position:absolute;right:21px;top:50%;transform:translateY(-50%);width:27px;height:27px;color:#286445;pointer-events:none;}
+.login-reference .login-input input{display:block;width:100%;height:64px;border:2px solid #c2d2cb;border-radius:22px;background:#ffffff45;padding:10px 62px 10px 22px;color:#183b2b;font-size:20px;font-weight:600;box-shadow:inset 0 1px 3px #325c3510,0 1px 2px #fff;outline:none;}
+.login-reference .login-input input::placeholder{color:#929e99;opacity:1;}
+.login-reference .login-input input:focus{border-color:#328c5b;box-shadow:0 0 0 4px #4ba97816;background:#fff9;}
+.login-reference .cloud-error{margin:0;font-size:13px;text-align:center;min-height:0;line-height:1.8;}
+.login-reference .cloud-error:not(:empty){margin-top:12px;}
+.login-reference .login-submit{display:flex;gap:18px;align-items:center;justify-content:center;margin-top:28px;min-height:68px;border:1px solid #247c4c;border-radius:24px;background:linear-gradient(125deg,#00663b,#087b44 52%,#00572f);box-shadow:inset 0 1px 2px #ffffff40,0 4px 10px #126e3d13;color:#fff;font-size:26px;font-weight:800;}
+.login-submit>svg{width:32px;height:32px;flex:none;}
+.login-reference .login-submit:hover{filter:brightness(1.08);}
+.login-reference .login-submit:disabled{opacity:.6;cursor:wait;}
+.login-reference .login-footer{font-size:15px;font-weight:700;color:#3f5045;line-height:1.8;text-align:center;margin:18px -8px 8px;}
+.login-waves{position:absolute;z-index:0;pointer-events:none;width:100%;left:0;}
+.login-waves-top{top:0;height:170px;}
+.login-waves-bottom{bottom:0;height:115px;}
+.login-leaves{position:absolute;bottom:0;left:4px;width:76px;height:100px;opacity:.8;pointer-events:none;}
+.login-reference .cloud-admin-link:focus-visible{outline:3px solid #54a574;outline-offset:3px;}
+@media(max-width:550px){.cloud-gate{padding:10px;}.login-reference{border-radius:34px;}.login-content{padding:26px 27px 54px;}.login-topline{font-size:18px;margin-bottom:8px;}.login-reference h1{font-size:32px;}.login-reference .login-intro{font-size:16px;}.login-reference .login-field{font-size:16px;}.login-reference .login-input input{height:58px;border-radius:19px;font-size:18px;}.login-reference .login-submit{font-size:23px;min-height:62px;border-radius:22px;margin-top:24px;}.login-reference .login-footer{font-size:13px;}.login-reference .cloud-emblem{width:123px;height:105px;}.cloud-emblem svg{width:114px;height:104px;}}
+@media(max-width:360px){.login-content{padding:22px 21px 46px;}.login-reference h1{font-size:28px;}.login-reference .login-intro{font-size:14px;}.login-topline{font-size:16px;}.login-reference .login-submit{font-size:21px;}.login-reference .login-input input{height:54px;}.login-reference .cloud-emblem{width:110px;height:94px;}.cloud-emblem svg{width:104px;height:94px;}}
+
+.session-restoring{text-align:center;padding:34px}.session-spinner{display:block;width:32px;height:32px;border:3px solid #d9eade;border-top-color:#087342;border-radius:50%;margin:0 auto;animation:session-spin .8s linear infinite}@keyframes session-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.session-spinner{animation:none}}
