@@ -1,12 +1,12 @@
-const CACHE='matjari-app-1.1.8';
-const FILES=["./","./index.html","./app-icon.svg","./manifest.webmanifest","./styles.css?v=1.1.8","./theme.css?v=1.1.8","./inventory.js?v=1.1.8","./ledger.js?v=1.1.8","./commerce.js?v=1.1.8","./report-data.js?v=1.1.8","./grocery-catalog.js?v=1.1.8","./backup-data.js?v=1.1.8","./reports.js?v=1.1.8","./settings.js?v=1.1.8","./cloud.css?v=1.1.8","./cloud-config.js?v=1.1.8","./cloud.bundle.js?v=1.1.8","./app.js?v=1.1.8"];
+const CACHE='matjari-app-1.2.0';
+const FILES=["./","./index.html","./app-icon.svg","./app-icon-192.png","./app-icon-512.png","./apple-touch-icon.png","./manifest.webmanifest","./styles.css?v=1.2.0","./theme.css?v=1.2.0","./inventory.js?v=1.2.0","./ledger.js?v=1.2.0","./commerce.js?v=1.2.0","./report-data.js?v=1.2.0","./grocery-catalog.js?v=1.2.0","./backup-data.js?v=1.2.0","./reports.js?v=1.2.0","./settings.js?v=1.2.0","./cloud.css?v=1.2.0","./cloud-config.js?v=1.2.0","./cloud.bundle.js?v=1.2.0","./app.js?v=1.2.0"];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>{if(!self.registration.active)return self.skipWaiting();})));
 self.addEventListener('message',event=>{if(event.data?.type==='ACTIVATE_UPDATE')self.skipWaiting();});
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('matjari-app-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
   const request=event.request,url=new URL(request.url);
   if(request.method!=='GET'||url.pathname==='/__revision'||url.pathname.endsWith('/version.json'))return;
-  const local=url.origin===self.location.origin&&(!url.pathname.split('/').pop().includes('.')||/\.(html|css|js|svg|webmanifest)$/.test(url.pathname));
+  const local=url.origin===self.location.origin&&(!url.pathname.split('/').pop().includes('.')||/\.(html|css|js|svg|png|webmanifest)$/.test(url.pathname));
   const image=/^[a-z0-9-]+\.convex\.cloud$/.test(url.hostname)&&url.pathname.startsWith('/api/storage/');
   const cdn=['fonts.googleapis.com','fonts.gstatic.com','unpkg.com'].includes(url.hostname);
   if(!local&&!image&&!cdn)return;
