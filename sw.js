@@ -1,5 +1,5 @@
-const CACHE='matjari-app-1.3.0';
-const FILES=["./","./index.html","./app-icon.svg","./app-icon-192.png","./app-icon-512.png","./apple-touch-icon.png","./manifest.webmanifest","./styles.css?v=1.3.0","./theme.css?v=1.3.0","./inventory.js?v=1.3.0","./ledger.js?v=1.3.0","./commerce.js?v=1.3.0","./report-data.js?v=1.3.0","./grocery-catalog.js?v=1.3.0","./backup-data.js?v=1.3.0","./reports.js?v=1.3.0","./settings.js?v=1.3.0","./cloud.css?v=1.3.0","./cloud-config.js?v=1.3.0","./cloud.bundle.js?v=1.3.0","./app.js?v=1.3.0"];
+const CACHE='matjari-app-1.3.1';
+const FILES=["./","./index.html","./app-icon.svg","./app-icon-192.png","./app-icon-512.png","./apple-touch-icon.png","./manifest.webmanifest","./styles.css?v=1.3.1","./theme.css?v=1.3.1","./inventory.js?v=1.3.1","./ledger.js?v=1.3.1","./commerce.js?v=1.3.1","./report-data.js?v=1.3.1","./grocery-catalog.js?v=1.3.1","./backup-data.js?v=1.3.1","./reports.js?v=1.3.1","./settings.js?v=1.3.1","./cloud.css?v=1.3.1","./cloud-config.js?v=1.3.1","./cloud.bundle.js?v=1.3.1","./access-guard.js?v=1.3.1","./app.js?v=1.3.1"];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(FILES)).then(()=>{if(!self.registration.active)return self.skipWaiting();})));
 self.addEventListener('message',event=>{if(event.data?.type==='ACTIVATE_UPDATE')self.skipWaiting();});
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('matjari-app-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
