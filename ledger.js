@@ -1,5 +1,19 @@
 'use strict';
 const Ledger = {
+  customerCodes(customers,previous=[]){
+    const next=structuredClone(customers),old=new Map(previous.filter(c=>c.customerCode!==undefined).map(c=>[c.id,c.customerCode])),used=new Set();
+    for(const c of next){
+      if(old.has(c.id)){if(c.customerCode!==undefined&&c.customerCode!==old.get(c.id))throw Error('رمز الزبون ثابت وما يتغيّر.');c.customerCode=old.get(c.id);}
+      if(c.customerCode!==undefined){if(typeof c.customerCode!=='string'||!/^\d{3,4}$/.test(c.customerCode)||Number(c.customerCode)<100||used.has(c.customerCode))throw Error('رمز زبون غير صالح أو مكرر.');used.add(c.customerCode);}
+    }
+    for(const c of next.filter(c=>c.customerCode===undefined).sort((a,b)=>a.id.localeCompare(b.id))){
+      if(used.size>=9900)throw Error('اكتملت الرموز المتاحة من 100 إلى 9999.');
+      let hash=2166136261;for(const char of c.id)hash=Math.imul(hash^char.charCodeAt(0),16777619);
+      let code=100+(hash>>>0)%9900;while(used.has(String(code)))code=code===9999?100:code+1;
+      c.customerCode=String(code);used.add(c.customerCode);
+    }
+    return next;
+  },
   cents(value){const n=InventoryData.number(value),result=Math.round(n*100);if(!Number.isFinite(n)||n<0||!Number.isSafeInteger(result))throw Error('أدخل مبلغاً صحيحاً غير سالب.');return result;},
   add(a,b){const result=a+b;if(!Number.isSafeInteger(result))throw Error('المبلغ يتجاوز الحد المدعوم.');return result;},
   customerDelta(t){return ['credit_sale','opening_debt'].includes(t.type)?t.totalCents:t.type==='debt_payment'?-t.totalCents:['sale_void','sale_return'].includes(t.type)&&t.originalType==='credit_sale'?-t.totalCents:0;},
